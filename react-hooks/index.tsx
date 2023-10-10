@@ -283,3 +283,49 @@ export const useQueryParam = (name: string) => {
 
     return [value, setValue] as const;
 };
+
+// This one I will debug and update
+// export const useScrollNavigation = () => {
+//     const collection = React.useRef({});
+
+//     const [active, setActive] = React.useState(null as string | null);
+
+//     useListener(window, 'scroll', () => {
+//         setActive(null);
+//     }, [setActive]);
+
+//     const anchor = React.useCallback((name: string) => {
+//         return (node: HTMLElement) => {
+//             collection.current[name] = node;
+//         };
+//     }, []);
+
+//     const navigate = React.useCallback((name: string) => {
+//         if (!collection.current[name]) {
+//             throw new Error(`Looks like ${name} is not presented on the page`);
+//         }
+
+//         collection.current[name].scrollIntoView({
+//             behavior: 'smooth'
+//         });
+
+//         // setTimeout(() => {
+//         //     setActive(name);
+//         // }, 100);
+//     }, []);
+
+//     return { anchor, navigate, active };
+// };
+
+export const getWindowWidth = () => {
+    return window.innerWidth;
+};
+
+export const useWindowWidth = () => {
+    const [size, setSize] = React.useState(getWindowWidth());
+    const listener = React.useMemo(() => _.debounce(() => setSize(getWindowWidth()), 100), [setSize]);
+
+    useListener(window, 'resize', listener, []);
+
+    return size;
+};
