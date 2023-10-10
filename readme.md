@@ -10,3 +10,4 @@ This is my collection of snippets for projects.
 4. [Simple Figma Notifications](https://github.com/lxchurbakov/snippets/tree/main/figma-notifications)
 5. [Mongo CRUD](https://github.com/lxchurbakov/snippets/tree/main/mongo-crud) - CRUD using mongodb
 6. [Authentication](https://github.com/lxchurbakov/snippets/tree/main/authentication) - simple authentication
+7. React Form
