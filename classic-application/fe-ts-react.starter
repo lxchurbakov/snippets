@@ -1,0 +1,116 @@
+// tsconfig.json
+
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "outDir": "./dist",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "target": "es2015",
+        "typeRoots": [
+            "node_modules/@types",
+            "src/types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "jsx": "react",
+        "paths": {
+            "/src/*": [
+                "./*"
+            ],
+        }
+    },
+    "include": [
+        "./**/*.ts",
+        "./**/*.tsx",
+    ]
+}
+
+// package.json
+
+{
+    "scripts": {
+        "dev": "npx parcel serve src/index.html",
+        "build": "NODE_ENV=production npx parcel build --public-url / src/index.html"
+    },
+    "dependencies": {
+        "lodash": "^4.17.21",
+        "parcel": "^2.8.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.4.3",
+        "styled-components": "^5.3.6",
+        "styled-icons": "^10.47.0",
+        "use-between": "^1.3.5",
+        "vextab": "^3.0.6"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.25",
+        "@types/react-dom": "^18.0.9",
+        "process": "^0.11.10"
+    }
+}
+
+// index.tsx
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import MainPage from '/src/domains/main/page';
+// import TimeArticle from '/src/domains/articles/time';
+// import EvolutionArticle from '/src/domains/articles/evolution';
+import AsideArticle from '/src/domains/articles/104';
+import DuoMusicApp from '/src/domains/applications/105';
+import BoardsEditor from '/src/domains/boards/page';
+
+const app = document.getElementById('app');
+
+ReactDOM.render((
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/104" element={<AsideArticle />} />
+            <Route path="/boards" element={<BoardsEditor />} />
+            
+            {/*process.env.NODE_ENV === 'development' && (
+                <>
+                    <Route path="/105" element={<DuoMusicApp />} />
+                </>
+            )*/}
+        </Routes>    
+    </BrowserRouter>
+), app);
+
+// index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aleksandr Churbakov</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+        <style>body { background: #fff; margin: 0; padding: 0; } a { color: inherit; text-decoration: none; } </style>
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script type="module" src="index.tsx"></script>
+    </body>
+</html>
+
