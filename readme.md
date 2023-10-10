@@ -9,4 +9,4 @@ This is my collection of snippets for projects.
 3. [Classic Application](https://github.com/lxchurbakov/snippets/tree/main/classic-application) - my favourite starter for full stack applications
 4. [Simple Figma Notifications](https://github.com/lxchurbakov/snippets/tree/main/figma-notifications)
 5. [Mongo CRUD](https://github.com/lxchurbakov/snippets/tree/main/mongo-crud) - CRUD using mongodb
-6. Authentication
+6. [Authentication](https://github.com/lxchurbakov/snippets/tree/main/authentication) - simple authentication
