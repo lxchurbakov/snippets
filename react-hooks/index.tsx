@@ -69,9 +69,9 @@ export const usePreviousValue = <T,>(value: T) => {
 };
 
 // Just attach listener and then remove it
-export const useListener = (target: any, event: string, callback: EventListenerOrEventListenerObject, deps: React.DependencyList) => {
+export const useListener = (target: any, event: string, callback: EventListenerOrEventListenerObject, deps: React.DependencyList, options?: any) => {
     React.useEffect(() => {
-        target.addEventListener(event, callback);
+        target.addEventListener(event, callback, options);
         return () => target.removeEventListener(event, callback);
     }, [...deps, callback]);
 };
@@ -328,4 +328,25 @@ export const useWindowWidth = () => {
     useListener(window, 'resize', listener, []);
 
     return size;
+};
+
+// Just a shortcut for the landing pages
+// that will help them create cool scroll effects
+//
+export const useSectionScroll = (predicate) => {
+    const ref = React.useRef(null);
+    const rectRef = React.useRef(null);
+    const predicateRef = useRefCallback(predicate);
+
+    React.useEffect(() => {
+        rectRef.current = ref.current.getBoundingClientRect();
+    }, []);
+
+    useListener(window, 'scroll', () => {
+        setTimeout(() => {
+            predicateRef.current(window.scrollY - ref.current.offsetTop);
+        }, 1);
+    }, [], { passive: true });
+
+    return ref;
 };
