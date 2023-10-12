@@ -167,3 +167,15 @@ export const Modal = ({ key, onClose, children, ...props }: React.PropsWithChild
         </ModalCard>
     ), modals, key);
 };
+
+export const Relative = styled(Base)`
+    position: relative;
+`;
+
+export const Absolute = styled(Base)`
+    position: absolute;
+    top: ${props => props.top};
+    left: ${props => props.left};
+    right: ${props => props.right};
+    bottom: ${props => props.bottom};
+`;
