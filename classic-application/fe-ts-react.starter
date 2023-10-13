@@ -60,33 +60,21 @@
 // index.tsx
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import MainPage from '/src/domains/main/page';
-// import TimeArticle from '/src/domains/articles/time';
-// import EvolutionArticle from '/src/domains/articles/evolution';
-import AsideArticle from '/src/domains/articles/104';
-import DuoMusicApp from '/src/domains/applications/105';
-import BoardsEditor from '/src/domains/boards/page';
+import Page from './page';
 
 const app = document.getElementById('app');
+const root = createRoot(app);
 
-ReactDOM.render((
+root.render((
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/104" element={<AsideArticle />} />
-            <Route path="/boards" element={<BoardsEditor />} />
-            
-            {/*process.env.NODE_ENV === 'development' && (
-                <>
-                    <Route path="/105" element={<DuoMusicApp />} />
-                </>
-            )*/}
+            <Route path="/" element={<Page />} />
         </Routes>    
     </BrowserRouter>
-), app);
+));
 
 // index.html
 
