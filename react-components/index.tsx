@@ -48,7 +48,6 @@ export const Canvas = ({ render }) => {
 };
 
 // link.tsx
-
 import React from 'react';
 import styled from 'styled-components';
 
@@ -58,7 +57,7 @@ import { colors } from '/src/libs/theme';
 const LinkLine = styled.div`
     width: 100%;
     height: 8px;
-    z-index: -1;
+    z-index: 1;
     left: 0;
     bottom: 0;
     background: ${colors.grey};
@@ -78,10 +77,15 @@ const LinkBase = styled(Clickable)`
     }
 `;
 
+const LinkCore = styled.a`
+    position: relative;
+    z-index: 2;
+`;
+
 export const Link = ({ href, children }) => {
     return (
         <LinkBase>
-            <a href={href}>{children}</a>
+            <LinkCore href={href}>{children}</LinkCore>
             <LinkLine />
         </LinkBase>
     );
