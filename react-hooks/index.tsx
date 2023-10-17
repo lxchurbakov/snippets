@@ -262,28 +262,6 @@ export const useChanged = <T,>(value: T, predicate: (prev: T, curr: T) => void) 
 //     }, deps);
 // };
 
-// That one I will split into 2
-export const useQueryParam = (name: string) => {
-    const forceUpdate = useForceUpdate();
-    const params = new URLSearchParams(window.location.search);
-    const value = params.get(name) || null;
-
-    const setValue = (v) => {
-        const params = new URLSearchParams(window.location.search);
-
-        if (v) {
-            params.set(name, v);
-        } else {
-            params.delete(name);
-        }
-
-        window.history.pushState({}, '', window.location.pathname + '?' + params.toString());
-        forceUpdate();
-    };
-
-    return [value, setValue] as const;
-};
-
 // This one I will debug and update
 // export const useScrollNavigation = () => {
 //     const collection = React.useRef({});
