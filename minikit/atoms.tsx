@@ -69,6 +69,10 @@ export const Text = styled(Base)<{ size?: string, weight?: string, color?: strin
     text-align: ${props => props.align};
 `;
 
+export const Mono = styled(Text)`
+    font-family: Monospace;
+`;
+
 export const Image = styled.img<BaseProps>`
     padding: ${props => props.p};
     padding-top: ${props => props.pt};

@@ -3,14 +3,15 @@ import styled from 'styled-components';
 
 import { Clickable } from '/src/libs/atoms';
 import { colors } from '/src/libs/theme';
+import { useHistory } from '/src/libs/history';
 
-const LinkLine = styled.div`
+const LinkLine = styled.div<{ color: string }>`
     width: 100%;
     height: 8px;
     z-index: 1;
     left: 0;
     bottom: 0;
-    background: ${colors.grey};
+    background: ${props => props.color || colors.grey};
     position: absolute;
     transition: height 100ms ease;
 `;
@@ -32,11 +33,19 @@ const LinkCore = styled.a`
     z-index: 2;
 `;
 
-export const Link = ({ href, children }) => {
+export const Link = ({ color, href, children }: any) => {
+    const history = useHistory();
+
+    const navigate = React.useCallback((e) => {
+        e.preventDefault();
+
+        history.navigate(href);
+    }, [href, history]);
+
     return (
         <LinkBase>
-            <LinkCore href={href}>{children}</LinkCore>
-            <LinkLine />
+            <LinkCore onClick={navigate} href={href}>{children}</LinkCore>
+            <LinkLine color={color} />
         </LinkBase>
     );
 }; 
