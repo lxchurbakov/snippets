@@ -42,7 +42,7 @@ export type TextInputProps = {
     placeholder?: string;
 };
 
-export const StringInput = ({ type, placeholder,  value, onChange,  size, weight, color, background, border, outline,  ...props }: TextInputProps & StyledInputProps & Input<string> & BaseProps) => {
+export const LineInput = ({ type, placeholder,  value, onChange,  size, weight, color, background, border, outline,  ...props }: TextInputProps & StyledInputProps & Input<string> & BaseProps) => {
     return (
         <Base w="100%" {...props}>
             <StyledInput placeholder={placeholder} type={type} value={value || ''} onChange={(e) => onChange(e.target.value || '')} {...{ size, weight, color, background, border, outline }} />
