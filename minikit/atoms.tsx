@@ -93,9 +93,9 @@ export const Image = styled.img<BaseProps>`
     object-fit: cover;
 `;
 
-export const Card = styled(Base)<{ color?: string, border?: string, radius?: string, hideOverflow?: boolean, block?: boolean, shadow?: string }>`
+export const Card = styled(Base)<{ background?: string, border?: string, radius?: string, hideOverflow?: boolean, block?: boolean, shadow?: string }>`
     display: ${props => props.block ? 'block' : 'inline-block'};
-    background: ${props => props.color || 'none'};
+    background: ${props => props.background || 'none'};
     border: ${props => props.border || 'none'};
     border-radius: ${props => props.radius || '0px'};
     overflow: ${props => props.hideOverflow ? 'hidden' : 'visible'};
