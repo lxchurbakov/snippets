@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import * as theme from '/src/libs/theme';
 
-import { Base, BaseProps } from './atoms';
+import { Base, BaseProps } from '/src/libs/atoms';
 
 export type StyledInputProps = {
     size?: string;
@@ -12,10 +12,11 @@ export type StyledInputProps = {
     background?: string;
     border?: string;
     outline?: string;
+    padding?: string;
 };
 
 const StyledInput = styled.input<StyledInputProps>`
-    font-family: ${theme.fontFamily};
+    font-family: Manrope, sans;
     font-size: ${props => props.size || '16px'};
     font-weight: ${props => props.weight || 400};
     color: ${props => props.color || theme.colors.text};
@@ -25,12 +26,8 @@ const StyledInput = styled.input<StyledInputProps>`
 
     border-radius: 4px;
     border: ${props => props.border || 'none'};
-    padding: 8px 12px;
+    padding: ${props => props.padding || '8px 12px'};
     background: ${props => props.background || 'transparent'};
-
-    // &:focus {
-    //     outline: ${props => props.outline || 'none'};;
-    // }
 
     outline: ${props => props.outline || 'none'};;
 `;
@@ -40,19 +37,23 @@ export type Input<T> = { value: T, onChange: ($: T) => void };
 export type TextInputProps = {
     type?: string;
     placeholder?: string;
+    onFocus?: () => void;
+    onBlur?: () => void;
 };
 
 export const LineInput = ({ 
-    type, placeholder, value, onChange, size, weight, color, background, border, outline, ...props 
+    type, placeholder, value, onChange, size, weight, color, background, border, outline, padding, onFocus, onBlur, ...props 
 }: TextInputProps & StyledInputProps & Input<string> & BaseProps) => {
     return (
         <Base w="100%" {...props}>
             <StyledInput 
+                onFocus={onFocus}
+                onBlur={onBlur}
                 type={type} 
                 placeholder={placeholder} 
                 value={value || ''} 
                 onChange={(e) => onChange(e.target.value || '')} 
-                {...{ size, weight, color, background, border, outline }} 
+                {...{ size, weight, color, background, border, outline, padding }} 
             />
         </Base>
     );

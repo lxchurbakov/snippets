@@ -14,9 +14,9 @@ const rotate = keyframes`
   }
 `;
 
-export const Spinner = styled(SpinnerIos).attrs({
-    color: colors.white,
+export const Spinner = styled(SpinnerIos).attrs((props) => ({
+    color: props.color || colors.white,
     size: '24px'
-})`
+}))`
     animation: ${rotate} 1.5s linear infinite;
 `;
