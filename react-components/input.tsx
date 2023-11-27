@@ -41,7 +41,7 @@ export type TextInputProps = {
     onBlur?: () => void;
 };
 
-export const LineInput = ({ 
+export const Input = ({ 
     type, placeholder, value, onChange, size, weight, color, background, border, outline, padding, onFocus, onBlur, ...props 
 }: TextInputProps & StyledInputProps & Input<string> & BaseProps) => {
     return (

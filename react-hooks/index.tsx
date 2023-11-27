@@ -26,12 +26,12 @@ export const useObservable = (r) => {
 };
 
 // Just 2 stupid hooks I use to hack through 
-// the bugs
+// the bugs of updated / not updated stuff
 export const useForceUpdate = ([_, setState] = React.useState(true)) => 
     () => setState((v) => !v);
 
-export const useTicker = ([state, setState] = React.useState(true)) => 
-    React.useMemo(() => ({ state, update: () => setState($ => !$) }), [state, setState])
+export const useTicker = ([state, setState] = React.useState(1)) => 
+    React.useMemo(() => ({ state, update: () => setState($ => $ + 1) }), [state]);
 
 // Like useQuery but simple
 export const useAsyncMemo = <T,>(predicate: Predicate<[], Promise<T>>, deps: React.DependencyList, defLoading = false) => {
