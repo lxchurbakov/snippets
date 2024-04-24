@@ -1,0 +1,3 @@
+# Simple SQL Tree Snippet
+
+The idea is that we store the tree path (/id/id) inside the entity itself, this way you can easily select any subtree if you know the parent path (or you may need to read one entry if you only know the id), but on other hand, you will need to maintain this structure, that means the insertions should know the path, that may require one read and deletion will require to rearrange all of the children.

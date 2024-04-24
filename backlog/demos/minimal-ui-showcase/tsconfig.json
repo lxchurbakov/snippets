@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "lib": ["es2016", "dom"],
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "typeRoots" : ["node_modules/@types", "./types"],
+    "baseUrl": ".",
+    "paths": {
+      "/icons/*": ["./icons/*"],
+      "/libs/*": ["./libs/*"],
+      "/components/*": ["./components/*"],
+      "/types/*": ["./types/*"]
+    }
+  }
+}

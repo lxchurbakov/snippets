@@ -1,0 +1,17 @@
+{
+  "name": "sql-tree-thread",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dc:up": ". ./.env && docker compose up",
+    "dc:down": ". ./.env && docker compose down",
+    "start": "node index.js"
+  },
+  "author": "swensson",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "pg": "^8.7.3"
+  }
+}
